@@ -15,3 +15,16 @@ Then('the only result should be:', function(table: TableDefinition) {
   expect(firstResult['Title']).toEqual(table.rowsHash()['Title']);
   expect(firstResult['Author']).toEqual(table.rowsHash()['Author']);
 });
+
+Then('there should be multiple results', function() {
+  expect(ResultsPage.numberOfResults).toBeGreaterThan(1);
+});
+
+Then('the results should include:', function(table: TableDefinition) {
+  const actualResults = ResultsPage.allResults;
+  const expectedResults = table.hashes();
+
+  for (let i = 0; i < expectedResults.length; i++) {
+    expect(actualResults).toContainEqual(expectedResults[i]);
+  }
+});

@@ -20,8 +20,21 @@ class ResultsPage {
 
     return {
       'Title': firstResultItem.$('a[itemprop="name"]').getText(),
-      'Author': firstResultItem.$('a[itemprop="author"]').getText()
+      'Author': firstResultItem.$('a[itemprop="author"]').getText(),
     };
+  }
+
+  get allResults() {
+    if (this.numberOfResults === 0) {
+      throw 'No search results found.';
+    }
+
+    return this.searchResultItems.map(function (item) {
+      return {
+        'Title': item.$('a[itemprop="name"]').getText(),
+        'Author': item.$('a[itemprop="author"]').getText(),
+      };
+    });
   }
 }
 
