@@ -29,10 +29,10 @@ class ResultsPage {
       throw 'No search results found.';
     }
 
-    return this.searchResultItems.map(function (item) {
+    return this.searchResultItems.map(function(item) {
       return {
         'Title': item.$('a[itemprop="name"]').getText(),
-        'Author': item.$('a[itemprop="author"]').getText(),
+        'Author': (item.getText().includes('Unknown author')) ? "" : item.$('a[itemprop="author"]').getText(),
       };
     });
   }
