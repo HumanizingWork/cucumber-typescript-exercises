@@ -19,8 +19,8 @@ class ResultsPage {
     const firstResultItem = this.searchResultItems[0];
 
     return {
-      'Title': firstResultItem.$('a[itemprop="name"]').getText(),
-      'Author': firstResultItem.$('a[itemprop="author"]').getText()
+      'Title': firstResultItem.$('h3[itemprop="name"] a').getText(),
+      'Author': firstResultItem.$('span[itemprop="author"] a').getText()
     };
   }
 }
